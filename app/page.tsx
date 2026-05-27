@@ -340,7 +340,7 @@ Clean silhouettes and intentional construction create a grounding frame for bold
             </p>
 
            <form
-  action="https://formspree.io/f/YOUR_FORM_ID"
+  action="https://formspree.io/f/yourformid"
   method="POST"
   className="flex flex-col md:flex-row gap-4 mt-12 max-w-2xl mx-auto"
 >

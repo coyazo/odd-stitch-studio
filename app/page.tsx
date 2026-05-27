@@ -21,13 +21,8 @@ export default function OSSWebsite() {
   },
   {
     id: "alice",
-    name: (
-  <>
-    Alice
-    <br />
-    Weekender
-  </>
-),title: "Alice Weekender",
+    name: "Alice Weekender",
+    title: "Alice Weekender",
     description:
       'Reimagined duffle bag made to stand out and be fashionably Wonderland!',
     price: '$275',

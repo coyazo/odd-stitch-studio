@@ -2,7 +2,7 @@
 import { useState } from "react";
 import WorkInspectionPopup from "./components/WorkInspectionPopup";
 export default function OSSWebsite() {
-  const [selectedWork, setSelectedWork] = useState(null);
+  const [selectedWork, setSelectedWork] = useState<any>(null);
     const products = [
   {
     id: "qoh",

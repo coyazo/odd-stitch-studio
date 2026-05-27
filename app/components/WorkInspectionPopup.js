@@ -24,7 +24,7 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
       <div className="relative w-full max-w-xl max-h-[75vh] overflow-y-auto bg-[#F4EEE4] border border-[#D6CFC2] rounded-[1.5rem] shadow-2xl">
        <button
   onClick={onClose}
-  className="absolute top-5 right-5 z-50 w-10 h-10 rounded-full border border-[#7A2E2E] bg-[#F4EEE4] text-[#7A2E2E] text-2xl flex items-center justify-center hover:bg-[#7A2E2E] hover:text-[#F4EEE4] transition-all duration-300"
+  className="absolute top-5 right-5 z-50 w-8 h-8 rounded-full border border-[#7A2E2E] bg-[#F4EEE4] text-[#7A2E2E] text-xl flex items-center justify-center hover:bg-[#7A2E2E] hover:text-[#F4EEE4] transition-all duration-300"
 >
   ×
 </button>

@@ -30,7 +30,7 @@ export default function OSSWebsite() {
     dimensions:"Dimensions coming soon",
     story:"A reimagined duffle bag made to stand out and feel fashionably Wonderland.",
     type: "Boxy Duffle",
-    image: '/images/AliceWeekender.jpg',
+    image:'/images/Alice-Weekender.jpg',
     sold: false,
   },
   {

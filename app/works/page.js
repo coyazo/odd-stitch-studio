@@ -19,7 +19,7 @@ export default function WorksPage() {
     {
       title: "Alice Weekender",
       type: "Boxy Duffle",
-      image: "/images/AliceWeekender.jpg",
+      image:"/images/testimage.jpg",
       status: "Available",
       price:"$225",
       dimensions: "Dimensions coming soon",

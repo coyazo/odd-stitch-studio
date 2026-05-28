@@ -7,6 +7,14 @@ export default function PatternDraftingPage() {
 
   return (
     <main className="min-h-screen bg-[#EAE3D6] text-[#111111]">
+      <div className="max-w-7xl mx-auto px-6 pt-10">
+  <a
+    href="/"
+    className="inline-flex items-center gap-3 border border-[#BEB5A7] px-6 py-3 rounded-full uppercase tracking-[0.25em] text-[10px] text-[#5B5650] hover:border-[#7A2E2E] hover:text-[#7A2E2E] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out"
+  >
+    ← Return to OSS
+  </a>
+</div>
       
       {/* HEADER */}
       <section className="max-w-7xl mx-auto px-6 pt-28 pb-20">

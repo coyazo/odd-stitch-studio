@@ -12,7 +12,7 @@ export default function OSSWebsite() {
       'Sturdy, colorful and attention-demanding - an overnight bag and a mini fit for a...',
     price: '$300',
     status: "Acquired",
-    dimensions: "Dimensions coming soon",
+    dimensions: "18L X 5D X 11H",
     story:
         "A bold Wonderland pairing built around saturated color, graphic contrast, and structured utility.",
     type: "Boxy Duffle & Cosmetic Bag",

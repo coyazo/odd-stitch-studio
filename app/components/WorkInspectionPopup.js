@@ -76,10 +76,16 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
                 {selectedWork.story}
               </p>
             </div>
-            {product.status === "available" && product.stripeUrl && (
-  <a href={product.stripeUrl}>
-    Acquire
-  </a>
+           {selectedWork.status?.toLowerCase() === "available" &&
+  selectedWork.stripeUrl && (
+    <a
+      href={selectedWork.stripeUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[#111111] px-8 py-4 text-xs uppercase tracking-[0.25em] text-[#EAE3D6] hover:bg-[#7A2E2E] transition-all duration-300"
+    >
+      Acquire
+    </a>
 )}
           </div>
         </div>

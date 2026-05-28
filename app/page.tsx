@@ -32,6 +32,7 @@ export default function OSSWebsite() {
     type: "Boxy Duffle",
     image:'/images/aliceweekender.png',
     sold: false,
+    stripeUrl:"https://buy.stripe.com/dRm7sFaTf99dgSw4pXe3e04",
   },
   {
     id: "rabbit",
@@ -40,13 +41,14 @@ export default function OSSWebsite() {
     description:
       'Curved to Carry - holds all those essentials for all those otherworldly trips.',
     price: '$175',
-    status: "Available",
+    status: "available",
     dimensions: "Dimensions coming soon",
     story:
         "A curved carry piece designed for everyday essentials and otherworldly little trips.",
       type: "Structured & Curved Zip Up",
     image: '/images/DTRH1.png',
     sold: false,
+    stripeUrl:"https://buy.stripe.com/bJefZbf9v2KP7hWcWte3e03",
   },
 ];
 const process = [
@@ -193,8 +195,8 @@ className="border border-[#BEB5A7] px-8 py-4 rounded-full uppercase tracking-[0.
     className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
   />
 
-  {/* ARCHIVED RIBBON */}
-  {product.sold && (
+ {/* ACQUIRED RIBBON */}
+{product.status.toLowerCase() === "acquired" && (
   <div className="absolute top-6 right-[-55px] rotate-45 origin-center z-50 bg-[#111111] text-[#EAE3D6] px-14 py-1 text-[10px] uppercase tracking-[0.4em] font-semibold shadow-2xl">
     Acquired
   </div>

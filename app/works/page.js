@@ -25,6 +25,7 @@ export default function WorksPage() {
       dimensions: "Dimensions coming soon",
       story:
         "A reimagined duffle bag made to stand out and feel fashionably Wonderland.",
+         stripeUrl:"https://buy.stripe.com/dRm7sFaTf99dgSw4pXe3e04",
     },
     {
       title: "Down the Rabbit Hole Carry-Along",
@@ -35,6 +36,7 @@ export default function WorksPage() {
       dimensions: "Dimensions coming soon",
       story:
         "A curved carry piece designed for everyday essentials and otherworldly little trips.",
+        stripeUrl:"https://buy.stripe.com/bJefZbf9v2KP7hWcWte3e03",
     },
     {
       title: "Big City Block",
@@ -45,6 +47,7 @@ export default function WorksPage() {
       dimensions: "Dimensions coming soon",
       story:
         "A structured Gladstone-style piece with architectural presence and practical interior volume.",
+        stripeUrl:"https://buy.stripe.com/cNi00daTffxBdGk7C9e3e02",
     },
     {
       title: "Small City Block",
@@ -55,6 +58,7 @@ export default function WorksPage() {
       dimensions: "Dimensions coming soon",
       story:
         "A smaller interpretation of the City Block form, balancing structured shape with compact utility.",
+        stripeUrl:"https://buy.stripe.com/8x27sF4uR85959O2hPe3e01",
     },
     {
       title: "E-City Block",
@@ -65,6 +69,7 @@ export default function WorksPage() {
       dimensions: "Dimensions coming soon",
       story:
         "A protective textile sleeve designed for tech carry with OSS structure and visual intention.",
+        stripeUrl:"https://buy.stripe.com/cNi8wJ9Pb1GL7hWe0xe3e00",
     },
   ];
 

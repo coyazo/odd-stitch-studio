@@ -76,6 +76,11 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
                 {selectedWork.story}
               </p>
             </div>
+            {product.status === "available" && product.stripeUrl && (
+  <a href={product.stripeUrl}>
+    Acquire
+  </a>
+)}
           </div>
         </div>
       </div>

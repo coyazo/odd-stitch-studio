@@ -86,7 +86,7 @@ export default function WorksPage() {
   </a>
 </div>
       {/* HEADER */}
-      <section className="border-b border-[#D6CFC2]">
+      <section>
         <div className="max-w-7xl mx-auto px-6 pt-12 pb-12">
           <p className="uppercase tracking-[0.35em] text-[#7A2E2E] text-xs mb-6">
             OSS Registry

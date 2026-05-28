@@ -12,7 +12,7 @@ export default function OSSWebsite() {
       'Sturdy, colorful and attention-demanding - an overnight bag and a mini fit for a...',
     price: '$300',
     status: "Acquired",
-    dimensions: "18L X 5D X 11H",
+    dimensions: "18L X 5W X 11H",
     story:
         "A bold Wonderland pairing built around saturated color, graphic contrast, and structured utility.",
     type: "Boxy Duffle & Cosmetic Bag",
@@ -27,7 +27,7 @@ export default function OSSWebsite() {
       'Reimagined duffle bag made to stand out and be fashionably Wonderland!',
     price: '$275',
     status: "available",
-    dimensions:"Dimensions coming soon",
+    dimensions:"18L X 5W X 11H",
     story:"A reimagined duffle bag made to stand out and feel fashionably Wonderland.",
     type: "Boxy Duffle",
     image:'/images/aliceweekender.png',
@@ -42,7 +42,7 @@ export default function OSSWebsite() {
       'Curved to Carry - holds all those essentials for all those otherworldly trips.',
     price: '$175',
     status: "available",
-    dimensions: "Dimensions coming soon",
+    dimensions: "15.5L X 3.5W X 12H",
     story:
         "A curved carry piece designed for everyday essentials and otherworldly little trips.",
       type: "Structured & Curved Zip Up",

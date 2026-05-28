@@ -12,7 +12,7 @@ export default function WorksPage() {
       image: "/images/QOH&A.png",
       status: "Acquired",
       price:"$325",
-      dimensions: "Dimensions coming soon",
+      dimensions: "18L X 5W X 11H",
       story:
         "A bold Wonderland pairing built around saturated color, graphic contrast, and structured utility.",
     },
@@ -22,7 +22,7 @@ export default function WorksPage() {
       image:"/images/aliceweekender.png",
       status: "Available",
       price:"$225",
-      dimensions: "Dimensions coming soon",
+      dimensions: "18L X 5W X 11H",
       story:
         "A reimagined duffle bag made to stand out and feel fashionably Wonderland.",
          stripeUrl:"https://buy.stripe.com/dRm7sFaTf99dgSw4pXe3e04",
@@ -33,7 +33,7 @@ export default function WorksPage() {
       image: "/images/DTRH1.png",
       status: "Available",
       price:"$125",
-      dimensions: "Dimensions coming soon",
+      dimensions: "15.5L X 3.5W X 12H",
       story:
         "A curved carry piece designed for everyday essentials and otherworldly little trips.",
         stripeUrl:"https://buy.stripe.com/bJefZbf9v2KP7hWcWte3e03",
@@ -44,7 +44,7 @@ export default function WorksPage() {
       image: "/images/bcb.png",
       status: "Available",
       price:"$275",
-      dimensions: "Dimensions coming soon",
+      dimensions: "18L X 12.5W X 13H",
       story:
         "A structured Gladstone-style piece with architectural presence and practical interior volume.",
         stripeUrl:"https://buy.stripe.com/cNi00daTffxBdGk7C9e3e02",
@@ -55,7 +55,7 @@ export default function WorksPage() {
       image: "/images/scb.png",
       status: "Available",
       price:"$175",
-      dimensions: "Dimensions coming soon",
+      dimensions: "14L X 7.5W X 9.5H",
       story:
         "A smaller interpretation of the City Block form, balancing structured shape with compact utility.",
         stripeUrl:"https://buy.stripe.com/8x27sF4uR85959O2hPe3e01",
@@ -66,7 +66,7 @@ export default function WorksPage() {
       image: "/images/ecb.png",
       status: "Available",
       price:"$45",
-      dimensions: "Dimensions coming soon",
+      dimensions: "15L X .75W X 11.5H",
       story:
         "A protective textile sleeve designed for tech carry with OSS structure and visual intention.",
         stripeUrl:"https://buy.stripe.com/cNi8wJ9Pb1GL7hWe0xe3e00",

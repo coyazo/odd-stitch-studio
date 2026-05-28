@@ -19,7 +19,7 @@ export default function ConstructionPage() {
   </a>
 </div>      
       {/* HEADER */}
-      <section className="max-w-7xl mx-auto px-6 pt-20 pb-14">
+      <section className="max-w-7xl mx-auto px-6 pt-12 pb-12">
         <p className="uppercase tracking-[0.3em] text-[#7A2E2E] text-xs mb-6">
           Studio / Construction
         </p>

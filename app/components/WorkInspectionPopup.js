@@ -30,7 +30,7 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
         padding: "24px",
       }}
     >
-      <div className="relative w-full max-w-xl max-h-[75vh] overflow-y-auto bg-[#F4EEE4] border border-[#D6CFC2] rounded-[1.5rem] shadow-2xl">
+      <div className="relative w-full max-w-4xl max-h-[75vh] overflow-y-auto bg-[#F4EEE4] border border-[#D6CFC2] rounded-[1.5rem] shadow-2xl">
        <button
   onClick={onClose}
   className="absolute top-5 right-5 z-50 w-7 h-7 rounded-full border border-[#7A2E2E] bg-[#F4EEE4] text-[#7A2E2E] text-xl flex items-center justify-center hover:bg-[#7A2E2E] hover:text-[#F4EEE4] transition-all duration-300"
@@ -38,13 +38,13 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
   ×
 </button>
 
-        <div className="flex gap-4 p-4 items-start">
-          <div className="w-[220px] shrink-0">
-  <div className="h-[160px] overflow-hidden rounded-[1.25rem] bg-[#DDD4C7] border border-[#D6CFC2]">
+        <div className="flex gap-8 p-8 items-start">
+          <div className="w-[360px] shrink-0">
+  <div className="h-[300px] overflow-hidden rounded-[1.25rem] bg-[#DDD4C7] border border-[#D6CFC2]">
     <img
       src={activeImage}
       alt={selectedWork.title}
-      className="w-full h-full object-cover"
+      className="w-full h-full object-contain"
     />
   </div>
 
@@ -63,7 +63,7 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
           <img
             src={img}
             alt={`${selectedWork.title} thumbnail`}
-            className="h-full w-full object-cover"
+            className="h-14 w-14 shrink-0 overflow-hidden rounded-lg border transition-all"
           />
         </button>
       ))}
@@ -116,7 +116,7 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
       href={selectedWork.stripeUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[#111111] px-8 py-4 text-xs uppercase tracking-[0.25em] text-[#EAE3D6] hover:bg-[#7A2E2E] transition-all duration-300"
+      className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[#111111] px-6 py-3 text-[10px] uppercase tracking-[0.25em] text-[#EAE3D6] hover:bg-[#7A2E2E] transition-all duration-300"
     >
       Acquire
     </a>

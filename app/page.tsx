@@ -17,10 +17,10 @@ export default function OSSWebsite() {
         "A bold Wonderland pairing built around saturated color, graphic contrast, and structured utility.",
     type: "Boxy Duffle & Cosmetic Bag",
     image: '/images/QOH&A.png',
-    images: [
-    "/images/QOH&A.png",
-    "/images/ugh.png",
-  ],
+   images:[
+      "images/ugh.png",
+      "images/QOH&A.png",
+      ],
     sold: true,
   },
   {

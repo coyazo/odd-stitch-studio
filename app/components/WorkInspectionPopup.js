@@ -30,7 +30,7 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
         padding: "24px",
       }}
     >
-      <div className="relative w-full max-w-4xl max-h-[75vh] overflow-y-auto bg-[#F4EEE4] border border-[#D6CFC2] rounded-[1.5rem] shadow-2xl">
+      <div className="relative w-full max-w-4xl max-h-[88vh] overflow-y-auto bg-[#F4EEE4] border border-[#D6CFC2] rounded-[1.5rem] shadow-2xl">
        <button
   onClick={onClose}
   className="absolute top-5 right-5 z-50 w-7 h-7 rounded-full border border-[#7A2E2E] bg-[#F4EEE4] text-[#7A2E2E] text-xl flex items-center justify-center hover:bg-[#7A2E2E] hover:text-[#F4EEE4] transition-all duration-300"
@@ -38,9 +38,9 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
   ×
 </button>
 
-        <div className="flex gap-8 p-8 items-start">
-          <div className="w-[360px] shrink-0">
-  <div className="h-[300px] overflow-hidden rounded-[1.25rem] bg-[#DDD4C7] border border-[#D6CFC2]">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-8 p-5 md:p-8 items-start">
+          <div className="w-full md:w-[360px] shrink-0">
+  <div className="h-[240px] md:h-[300px] overflow-hidden rounded-[1.25rem] bg-[#DDD4C7] border border-[#D6CFC2]">
     <img
       src={activeImage}
       alt={selectedWork.title}

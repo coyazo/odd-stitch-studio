@@ -11,7 +11,7 @@ export default function WorksPage() {
       type: "Boxy Duffle & Cosmetic Bag",
       image: "/images/QOH&A.png",
       status: "Acquired",
-      price:"$325",
+      price:"$200",
       dimensions: "18L X 5W X 11H",
       story:
         "A bold Wonderland pairing built around saturated color, graphic contrast, and structured utility.",
@@ -21,11 +21,11 @@ export default function WorksPage() {
       type: "Boxy Duffle",
       image:"/images/aliceweekender.png",
       status: "Available",
-      price:"$225",
+      price:"$175",
       dimensions: "18L X 5W X 11H",
       story:
         "A reimagined duffle bag made to stand out and feel fashionably Wonderland.",
-         stripeUrl:"https://buy.stripe.com/dRm7sFaTf99dgSw4pXe3e04",
+         stripeUrl:"https://buy.stripe.com/aFa5kx3qN1GL9q44pXe3e05",
     },
     {
       title: "Down the Rabbit Hole Carry-Along",
@@ -36,40 +36,40 @@ export default function WorksPage() {
       dimensions: "15.5L X 3.5W X 12H",
       story:
         "A curved carry piece designed for everyday essentials and otherworldly little trips.",
-        stripeUrl:"https://buy.stripe.com/bJefZbf9v2KP7hWcWte3e03",
+        stripeUrl:"https://buy.stripe.com/7sY4gt2mJ715eKog8Fe3e06",
     },
     {
       title: "Big City Block",
       type: "Gladstone Bag",
       image: "/images/bcb.png",
       status: "Available",
-      price:"$275",
+      price:"$200",
       dimensions: "18L X 12.5W X 13H",
       story:
         "A structured Gladstone-style piece with architectural presence and practical interior volume.",
-        stripeUrl:"https://buy.stripe.com/cNi00daTffxBdGk7C9e3e02",
+        stripeUrl:"https://buy.stripe.com/8x27sFf9vbhlcCgbSpe3e07",
     },
     {
       title: "Small City Block",
       type: "Gladstone Bag",
       image: "/images/scb.png",
       status: "Available",
-      price:"$175",
+      price:"$100",
       dimensions: "14L X 7.5W X 9.5H",
       story:
         "A smaller interpretation of the City Block form, balancing structured shape with compact utility.",
-        stripeUrl:"https://buy.stripe.com/8x27sF4uR85959O2hPe3e01",
+        stripeUrl:"https://buy.stripe.com/3cIeV77H3etxcCgg8Fe3e08",
     },
     {
       title: "E-City Block",
       type: "Laptop Sleeve",
       image: "/images/ecb.png",
       status: "Available",
-      price:"$45",
+      price:"$30",
       dimensions: "15L X .75W X 11.5H",
       story:
         "A protective textile sleeve designed for tech carry with OSS structure and visual intention.",
-        stripeUrl:"https://buy.stripe.com/cNi8wJ9Pb1GL7hWe0xe3e00",
+        stripeUrl:"https://buy.stripe.com/6oU5kx5yVbhlfOs6y5e3e09",
     },
   ];
 

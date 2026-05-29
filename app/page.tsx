@@ -10,7 +10,7 @@ export default function OSSWebsite() {
     title: "Queen of Hearts Weekender & Alice Mini",
     description:
       'Sturdy, colorful and attention-demanding - an overnight bag and a mini fit for a...',
-    price: '$300',
+    price: '$200',
     status: "Acquired",
     dimensions: "18L X 5W X 11H",
     story:
@@ -25,14 +25,14 @@ export default function OSSWebsite() {
     title: "Alice Weekender",
     description:
       'Reimagined duffle bag made to stand out and be fashionably Wonderland!',
-    price: '$275',
+    price: '$175',
     status: "available",
     dimensions:"18L X 5W X 11H",
     story:"A reimagined duffle bag made to stand out and feel fashionably Wonderland.",
     type: "Boxy Duffle",
     image:'/images/aliceweekender.png',
     sold: false,
-    stripeUrl:"https://buy.stripe.com/dRm7sFaTf99dgSw4pXe3e04",
+    stripeUrl:"https://buy.stripe.com/aFa5kx3qN1GL9q44pXe3e05",
   },
   {
     id: "rabbit",
@@ -40,7 +40,7 @@ export default function OSSWebsite() {
     title: "Down the Rabbit Hole Carry-Along",
     description:
       'Curved to Carry - holds all those essentials for all those otherworldly trips.',
-    price: '$175',
+    price: '$125',
     status: "available",
     dimensions: "15.5L X 3.5W X 12H",
     story:
@@ -48,7 +48,7 @@ export default function OSSWebsite() {
       type: "Structured & Curved Zip Up",
     image: '/images/DTRH1.png',
     sold: false,
-    stripeUrl:"https://buy.stripe.com/bJefZbf9v2KP7hWcWte3e03",
+    stripeUrl:"https://buy.stripe.com/7sY4gt2mJ715eKog8Fe3e06",
   },
 ];
 const process = [

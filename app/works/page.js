@@ -11,7 +11,6 @@ export default function WorksPage() {
       type: "Boxy Duffle & Cosmetic Bag",
       image: "/images/QOH&A.png",
       images:[
-      "images/ugh.png",
       "images/QOH&A.png",
       ],
       status: "Acquired",

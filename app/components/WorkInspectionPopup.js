@@ -40,7 +40,7 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
 
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 p-5 md:p-8 items-start">
           <div className="w-full md:w-[360px] shrink-0">
-  <div className="h-[240px] md:h-[300px] overflow-hidden rounded-[1.25rem] bg-[#DDD4C7] border border-[#D6CFC2]">
+  <div className="h-[240px] md: h-[300px] overflow-hidden rounded-[1.25rem] bg-[#DDD4C7] border border-[#D6CFC2]">
     <img
       src={activeImage}
       alt={selectedWork.title}

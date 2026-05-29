@@ -11,7 +11,7 @@ export default function WorksPage() {
       type: "Boxy Duffle & Cosmetic Bag",
       image: "/images/QOH&A.png",
       images:[
-      "images/QOHZOOM.png",
+      "images/ugh.png",
       "images/QOH&A.png",
       ],
       status: "Acquired",
@@ -29,7 +29,7 @@ export default function WorksPage() {
     "/images/alicetop.png",
     "/images/aliceback.png",
     "/images/alicelining.png",
-    "/images/aliceweekender/png",
+    "/images/aliceweekender.png",
   ],
       status: "Available",
       price:"$175",

@@ -19,7 +19,7 @@ export default function OSSWebsite() {
     image: '/images/QOH&A.png',
     images: [
     "/images/QOH&A.png",
-    "/images/QOHZOOM.png",
+    "/images/ugh.png",
   ],
     sold: true,
   },

@@ -20,6 +20,12 @@ export default function WorksPage() {
       title: "Alice Weekender",
       type: "Boxy Duffle",
       image:"/images/aliceweekender.png",
+      images: [
+    "/images/aliceupclose.png",
+    "/images/alicetop.png",
+    "/images/aliceback",
+    "/images/alicelining.png"
+  ],
       status: "Available",
       price:"$175",
       dimensions: "18L X 5W X 11H",
@@ -31,6 +37,12 @@ export default function WorksPage() {
       title: "Down the Rabbit Hole Carry-Along",
       type: "Structured & Curved Zip Up",
       image: "/images/DTRH1.png",
+      images: [
+    "/images/dtrhfrontzip.png",
+    "/images/dtrhback.png",
+    "/images/dtrhside.png",
+    "/images/dtrhtopzip.png"
+  ],
       status: "Available",
       price:"$125",
       dimensions: "15.5L X 3.5W X 12H",
@@ -42,6 +54,11 @@ export default function WorksPage() {
       title: "Big City Block",
       type: "Gladstone Bag",
       image: "/images/bcb.png",
+      images: [
+    "/images/bcbside.png",
+    "/images/bcbinside.png",
+    "/images/bcbinsidezip.png",
+  ],
       status: "Available",
       price:"$200",
       dimensions: "18L X 12.5W X 13H",
@@ -53,6 +70,10 @@ export default function WorksPage() {
       title: "Small City Block",
       type: "Gladstone Bag",
       image: "/images/scb.png",
+      images: [
+    "/images/scbfull.png",
+    "/images/scbhardware.png",
+  ],
       status: "Available",
       price:"$100",
       dimensions: "14L X 7.5W X 9.5H",
@@ -64,6 +85,11 @@ export default function WorksPage() {
       title: "E-City Block",
       type: "Laptop Sleeve",
       image: "/images/ecb.png",
+      images: [
+    "/images/ecbupclose.png",
+    "/images/ecblaptop.png",
+    "/images/ecbinside.png",
+  ],
       status: "Available",
       price:"$30",
       dimensions: "15L X .75W X 11.5H",

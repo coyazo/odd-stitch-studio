@@ -1,8 +1,17 @@
 "use client";
 
 import { createPortal } from "react-dom";
+import { useState, useEffect } from "react";
 
 export default function WorkInspectionPopup({ selectedWork, onClose }) {
+  const [activeImage, setActiveImage] = useState("");
+
+  useEffect(() => {
+    if (selectedWork) {
+      setActiveImage(selectedWork.images?.[0] || selectedWork.image);
+    }
+  }, [selectedWork]);
+
   if (!selectedWork) return null;
 
   return createPortal(
@@ -30,13 +39,38 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
 </button>
 
         <div className="flex gap-4 p-4 items-start">
-          <div className="w-[220px] h-[160px] shrink-0 overflow-hidden rounded-[1.25rem] bg-[#DDD4C7] border border-[#D6CFC2]">
-            <img
-              src={selectedWork.images?.[0] || selectedWork.image}
-              alt={selectedWork.title}
-              className="w-full h-full object-cover"
-            />
-          </div>
+          <div className="w-[220px] shrink-0">
+  <div className="h-[160px] overflow-hidden rounded-[1.25rem] bg-[#DDD4C7] border border-[#D6CFC2]">
+    <img
+      src={activeImage}
+      alt={selectedWork.title}
+      className="w-full h-full object-cover"
+    />
+  </div>
+
+  {selectedWork.images?.length > 1 && (
+    <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+      {selectedWork.images.map((img) => (
+        <button
+          key={img}
+          onClick={() => setActiveImage(img)}
+          className={`h-12 w-12 shrink-0 overflow-hidden rounded-lg border transition-all ${
+            activeImage === img
+              ? "border-[#7A2E2E]"
+              : "border-[#D6CFC2]"
+          }`}
+        >
+          <img
+            src={img}
+            alt={`${selectedWork.title} thumbnail`}
+            className="h-full w-full object-cover"
+          />
+        </button>
+      ))}
+    </div>
+  )}
+</div>
+
 
           <div className="flex-1 pt-1 min-w-0">
             <p className="uppercase tracking-[0.28em] text-[#7A2E2E] text-[9px] mb-3">

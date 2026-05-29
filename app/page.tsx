@@ -35,6 +35,12 @@ export default function OSSWebsite() {
     story:"A reimagined duffle bag made to stand out and feel fashionably Wonderland.",
     type: "Boxy Duffle",
     image:'/images/aliceweekender.png',
+    images: [
+    "/images/aliceupclose.png",
+    "/images/alicetop.png",
+    "/images/aliceback",
+    "/images/alicelining.png"
+  ],
     sold: false,
     stripeUrl:"https://buy.stripe.com/aFa5kx3qN1GL9q44pXe3e05",
   },
@@ -51,6 +57,12 @@ export default function OSSWebsite() {
         "A curved carry piece designed for everyday essentials and otherworldly little trips.",
       type: "Structured & Curved Zip Up",
     image: '/images/DTRH1.png',
+    images: [
+    "/images/dtrhfrontzip.png",
+    "/images/dtrhback.png",
+    "/images/dtrhside",
+    "/images/dtrhtopzip.png"
+  ],
     sold: false,
     stripeUrl:"https://buy.stripe.com/7sY4gt2mJ715eKog8Fe3e06",
   },

@@ -8,7 +8,7 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
 
   useEffect(() => {
     if (selectedWork) {
-      setActiveImage(selectedWork.images?.[0] || selectedWork.image);
+      setActiveImage(selectedWork.image);
     }
   }, [selectedWork]);
 
@@ -48,7 +48,7 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
     />
   </div>
 
-  {selectedWork.images?.length > 1 && (
+  {selectedWork.images?.length > 0 && (
     <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
       {selectedWork.images.map((img) => (
         <button

@@ -19,7 +19,7 @@ export default function OSSWebsite() {
     image: '/images/QOH&A.png',
     images: [
     "/images/QOH&A.png",
-    "/images/QOHSIDE.png"
+    "/images/QOHSIDE.png",
   ],
     sold: true,
   },
@@ -38,8 +38,9 @@ export default function OSSWebsite() {
     images: [
     "/images/aliceupclose.png",
     "/images/alicetop.png",
-    "/images/aliceback",
-    "/images/alicelining.png"
+    "/images/aliceback.png",
+    "/images/alicelining.png",
+    "/images/aliceweekender.png",
   ],
     sold: false,
     stripeUrl:"https://buy.stripe.com/aFa5kx3qN1GL9q44pXe3e05",
@@ -60,8 +61,9 @@ export default function OSSWebsite() {
     images: [
     "/images/dtrhfrontzip.png",
     "/images/dtrhback.png",
-    "/images/dtrhside",
-    "/images/dtrhtopzip.png"
+    "/images/dtrhside.png",
+    "/images/dtrhtopzip.png",
+    "images/DTRH1.png",
   ],
     sold: false,
     stripeUrl:"https://buy.stripe.com/7sY4gt2mJ715eKog8Fe3e06",

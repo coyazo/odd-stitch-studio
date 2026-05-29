@@ -23,8 +23,9 @@ export default function WorksPage() {
       images: [
     "/images/aliceupclose.png",
     "/images/alicetop.png",
-    "/images/aliceback",
-    "/images/alicelining.png"
+    "/images/aliceback.png",
+    "/images/alicelining.png",
+    "/images/aliceweekendr/png",
   ],
       status: "Available",
       price:"$175",
@@ -41,7 +42,8 @@ export default function WorksPage() {
     "/images/dtrhfrontzip.png",
     "/images/dtrhback.png",
     "/images/dtrhside.png",
-    "/images/dtrhtopzip.png"
+    "/images/dtrhtopzip.png",
+    "images/DTRH1.png",
   ],
       status: "Available",
       price:"$125",
@@ -58,6 +60,7 @@ export default function WorksPage() {
     "/images/bcbside.png",
     "/images/bcbinside.png",
     "/images/bcbinsidezip.png",
+    "/images/bcb.png",
   ],
       status: "Available",
       price:"$200",
@@ -73,6 +76,7 @@ export default function WorksPage() {
       images: [
     "/images/scbfull.png",
     "/images/scbhardware.png",
+    "/images/scb.png",
   ],
       status: "Available",
       price:"$100",
@@ -89,6 +93,7 @@ export default function WorksPage() {
     "/images/ecbupclose.png",
     "/images/ecblaptop.png",
     "/images/ecbinside.png",
+    "/images/ecb.png",
   ],
       status: "Available",
       price:"$30",

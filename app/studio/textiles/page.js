@@ -34,7 +34,7 @@ export default function TextilePage() {
           Textile Field
         </h1>
          <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#5B5650]">
-          Soft cottons made to be sturdy, heavy fabrics made to look crisp and delicate.
+          Soft cottons made to be sturdy, heavy fabrics made to look crisp and delicate. All textiles used are responsibly sourced.  Designer fabrics stem from all-inclusive companies.
         </p>
       </section>
 

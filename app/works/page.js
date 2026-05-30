@@ -39,7 +39,7 @@ export default function WorksPage() {
     },
     {
       title: "Down the Rabbit Hole Carry-Along",
-      type: "Structured & Curved Zip Up",
+      type: "Structured & Curved Zip Up - A Minki Kim Pattern",
       image: "/images/DTRH1.png",
       images: [
     "/images/dtrhfrontzip.png",

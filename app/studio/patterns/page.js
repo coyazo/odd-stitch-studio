@@ -28,7 +28,7 @@ export default function PatternDraftingPage() {
 
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#5B5650]">
           Structural layouts, silhouette studies, dimensional planning,
-          and functional geometry for OSS works.
+          and functional geometry for OSS works.  Patterns, unless otherwise stated, are created by the founder of OSS.
         </p>
       </section>
 

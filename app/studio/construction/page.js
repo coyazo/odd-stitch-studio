@@ -30,7 +30,7 @@ export default function ConstructionPage() {
 
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-[#5B5650]">
           Layered structure, reinforced seams, textile architecture, and the
-          quiet engineering behind every OSS piece.
+          quiet engineering behind every OSS piece.  Each piece is painstakingly quilted to highlight design details and to add a notion of imperfection.
         </p>
       </section>
 

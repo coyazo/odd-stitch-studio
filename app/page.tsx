@@ -248,6 +248,15 @@ className="border border-[#BEB5A7] px-8 py-4 rounded-full uppercase tracking-[0.
             </div>
           ))}
         </div>
+        {/* MORE WORK */}
+<div className="flex justify-center mt-16">
+  <a
+    href="/works"
+    className="uppercase tracking-[0.35em] text-sm text-[#7A2E2E] hover:text-[#111111] hover:tracking-[0.4em] transition-all duration-300"
+  >
+    View Additional Works →
+  </a>
+</div>
       </section>
 
       {/* ABOUT */}

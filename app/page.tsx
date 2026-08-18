@@ -3,6 +3,7 @@ import { useState } from "react";
 import WorkInspectionPopup from "./components/WorkInspectionPopup";
 export default function OSSWebsite() {
   const [selectedWork, setSelectedWork] = useState<any>(null);
+  const [showComingSoon, setShowComingSoon] = useState(true);
     const products = [
   {
     id: "qoh",
@@ -419,6 +420,305 @@ Clean silhouettes and intentional construction create a grounding frame for bold
           </div>
         </div>
       </footer>
+        {/* HALLOWEEN COMING SOON OVERLAY */}
+      {showComingSoon && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#111111]/80 backdrop-blur-md px-4 md:px-6 py-4 md:py-8 overflow-y-auto"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="coming-soon-title"
+        >
+          <div className="relative w-full max-w-5xl min-h-[88vh] md:min-h-0 border border-[#D6CFC2] bg-[#EAE3D6] shadow-2xl overflow-hidden">
+
+            {/* =======================================================
+                FAINT BACKGROUND SPIRAL
+                ======================================================= */}
+            <div
+              className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden"
+              aria-hidden="true"
+            >
+              <svg
+                viewBox="0 0 800 800"
+                className="w-[850px] h-[850px] md:w-[1050px] md:h-[1050px] opacity-[0.045]"
+                fill="none"
+              >
+                <path
+                  d="
+                    M400 400
+                    C455 350 525 375 535 435
+                    C548 515 465 570 385 545
+                    C280 512 245 385 310 300
+                    C392 195 565 220 640 330
+                    C735 470 640 660 475 700
+                    C265 750 85 575 115 365
+                    C150 125 425 25 625 145
+                  "
+                  stroke="#111111"
+                  strokeWidth="18"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
+
+            {/* ABSTRACT STITCH LINE — LEADS TO DISMISS */}
+<div
+  className="absolute left-0 right-0 bottom-[108px] h-[90px] opacity-30 pointer-events-none"
+  aria-hidden="true"
+>
+  <svg
+    viewBox="0 0 1000 90"
+    preserveAspectRatio="none"
+    className="w-full h-full"
+    fill="none"
+  >
+    <path
+      d="
+        M0 58
+        C85 55, 110 86, 175 62
+        C235 38, 270 25, 330 48
+        C390 70, 420 92, 470 70
+        C515 50, 525 28, 565 42
+        C570 54, 585 58, 600 57
+      "
+      stroke="#7A2E2E"
+      strokeWidth="2"
+      strokeDasharray="9 10"
+      strokeLinecap="round"
+    />
+  </svg>
+</div>
+
+            {/* =======================================================
+                CROOKED BUNTING — UPPER RIGHT
+                ======================================================= */}
+            <div
+              className="hidden md:block absolute top-[54px] right-[20px] w-[380px] rotate-[-5deg] pointer-events-none z-20"
+              aria-hidden="true"
+            >
+              {/* STRING */}
+              <div className="h-px bg-[#111111]/55 w-full mb-[-1px]" />
+
+              <div className="flex justify-end gap-[5px]">
+
+                {/* PINK */}
+                <div
+                  className="w-10 h-14 bg-[#D96C9C]"
+                  style={{
+                    clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                  }}
+                />
+
+                {/* BLACK + CREAM STRIPE */}
+                <div
+                  className="w-10 h-16"
+                  style={{
+                    clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                    background:
+                      "repeating-linear-gradient(135deg, #111111 0px, #111111 8px, #EAE3D6 8px, #EAE3D6 16px)",
+                  }}
+                />
+
+                {/* TEAL */}
+                <div
+                  className="w-10 h-13 bg-[#3F9B9B]"
+                  style={{
+                    clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                    height: "52px",
+                  }}
+                />
+
+                {/* CHECKER */}
+                <div
+                  className="w-10 h-16"
+                  style={{
+                    clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                    backgroundColor: "#EAE3D6",
+                    backgroundImage: `
+                      linear-gradient(45deg, #111111 25%, transparent 25%),
+                      linear-gradient(-45deg, #111111 25%, transparent 25%),
+                      linear-gradient(45deg, transparent 75%, #111111 75%),
+                      linear-gradient(-45deg, transparent 75%, #111111 75%)
+                    `,
+                    backgroundSize: "16px 16px",
+                    backgroundPosition:
+                      "0 0, 0 8px, 8px -8px, -8px 0px",
+                  }}
+                />
+
+                {/* PINK */}
+                <div
+                  className="w-10 h-14 bg-[#D96C9C]"
+                  style={{
+                    clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                  }}
+                />
+
+                {/* TEAL */}
+                <div
+                  className="w-10 bg-[#3F9B9B]"
+                  style={{
+                    height: "61px",
+                    clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                  }}
+                />
+
+                {/* BLACK */}
+                <div
+                  className="w-10 h-14 bg-[#111111]"
+                  style={{
+                    clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* =======================================================
+                TOP TRANSMISSION BAR
+                ======================================================= */}
+            <div className="relative z-30 border-b border-[#D6CFC2] px-6 md:px-8 py-4 flex justify-between items-center">
+              <span className="uppercase tracking-[0.35em] text-[9px] md:text-[10px] text-[#7A2E2E]">
+                OSS / TRANSMISSION
+              </span>
+
+              <span className="uppercase tracking-[0.25em] text-[9px] md:text-[10px] text-[#6B655E]">
+                2026
+              </span>
+            </div>
+
+            {/* =======================================================
+                MAIN ANNOUNCEMENT
+                ======================================================= */}
+            <div className="relative z-10 px-7 py-16 md:px-20 md:py-20 lg:py-24 text-center">
+
+              {/* LITTLE COLOR LANGUAGE */}
+              <div className="flex items-center justify-center gap-3 mb-9">
+                <span className="h-[7px] w-[7px] rounded-full bg-[#D96C9C]" />
+                <span className="uppercase tracking-[0.42em] text-[9px] md:text-[10px] text-[#6B655E]">
+                  Pink / Teal / Horror / Oddities
+                </span>
+                <span className="h-[7px] w-[7px] rounded-full bg-[#3F9B9B]" />
+              </div>
+
+              <p className="uppercase tracking-[0.5em] text-[#D15C91] text-[10px] md:text-xs mb-7">
+                Coming Soon
+              </p>
+
+              <h2
+                id="coming-soon-title"
+                className="text-[3.15rem] sm:text-6xl md:text-7xl lg:text-[4.6rem] leading-[0.9] tracking-[-0.045em] font-semibold text-[#111111]"
+              >
+                Halloween
+                <br />
+                Is Being Conjured.
+              </h2>
+
+              {/* COLORED ACCENT MARKS */}
+              <div
+                className="flex justify-center items-center gap-2 mt-9"
+                aria-hidden="true"
+              >
+                <div className="h-px w-10 md:w-16 bg-[#D96C9C]" />
+                <div className="h-[5px] w-[5px] rotate-45 bg-[#111111]" />
+                <div className="h-px w-10 md:w-16 bg-[#3F9B9B]" />
+              </div>
+
+              <p className="mt-9 max-w-2xl mx-auto text-[#5B5650] text-sm md:text-lg leading-relaxed">
+                OSS is conjuring a small batch of ghoulish goods —{" "}
+<br className="hidden md:block" />
+designed, constructed, and slightly spooky.
+              </p>
+
+              {/* =====================================================
+                  THREE VISUAL CLUES
+                  ===================================================== */}
+              <div className="grid grid-cols-3 gap-3 md:gap-5 max-w-xl mx-auto mt-11">
+
+                {/* PINK / TEAL */}
+                <div className="relative h-16 md:h-20 border border-[#CFC5B8] bg-[#F4EEE4] overflow-hidden">
+                  <div className="absolute -left-4 -top-5 w-20 h-20 rounded-full bg-[#D96C9C]" />
+                  <div className="absolute right-[-12px] bottom-[-26px] w-24 h-24 rounded-full bg-[#3F9B9B]" />
+                  <div className="absolute left-[43%] top-0 bottom-0 w-px rotate-[18deg] bg-[#111111]/30" />
+                </div>
+
+                {/* HORROR / BUNTING */}
+                <div className="relative h-16 md:h-20 border border-[#CFC5B8] bg-[#111111] overflow-hidden">
+                  <div className="absolute top-3 left-0 right-0 h-px bg-[#EAE3D6]/70" />
+
+                  <div className="absolute top-3 left-1/2 -translate-x-1/2 flex gap-[3px]">
+                    <div
+                      className="w-5 h-8 bg-[#D96C9C]"
+                      style={{
+                        clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                      }}
+                    />
+                    <div
+                      className="w-5 h-7 bg-[#EAE3D6]"
+                      style={{
+                        clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                      }}
+                    />
+                    <div
+                      className="w-5 h-9 bg-[#3F9B9B]"
+                      style={{
+                        clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                      }}
+                    />
+                    <div
+                      className="w-5 h-7 bg-[#EAE3D6]"
+                      style={{
+                        clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                      }}
+                    />
+                    <div
+                      className="w-5 h-8 bg-[#D96C9C]"
+                      style={{
+                        clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* CROOKED STRIPES */}
+                <div
+                  className="h-16 md:h-20 border border-[#CFC5B8]"
+                  style={{
+                    background:
+                      "repeating-linear-gradient(115deg, #111111 0px, #111111 12px, #EAE3D6 12px, #EAE3D6 24px)",
+                  }}
+                />
+              </div>
+
+              <p className="mt-10 uppercase tracking-[0.38em] text-[9px] md:text-[10px] text-[#6B655E]">
+                Materializing 9.1.26
+              </p>
+
+              {/* DISMISS */}
+              <button
+                type="button"
+                onClick={() => setShowComingSoon(false)}
+                className="group mt-12 inline-flex flex-col items-center uppercase tracking-[0.38em] text-[10px] md:text-[11px] text-[#7A2E2E] hover:text-[#111111] transition-colors duration-300"
+              >
+                <span>Dismiss</span>
+
+                <span className="mt-2 flex gap-[3px]">
+                  <span className="block h-px w-5 bg-[#D96C9C] group-hover:w-7 transition-all duration-300" />
+                  <span className="block h-px w-5 bg-[#3F9B9B] group-hover:w-7 transition-all duration-300" />
+                </span>
+              </button>
+            </div>
+
+            {/* =======================================================
+                BOTTOM LABEL
+                ======================================================= */}
+            <div className="relative z-20 border-t border-[#D6CFC2] px-6 py-4 text-center bg-[#EAE3D6]/80">
+              <span className="uppercase tracking-[0.3em] text-[8px] md:text-[9px] text-[#6B655E]">
+                Odd Stitch Studio — Art, Made to Carry
+              </span>
+            </div>
+
+          </div>
+        </div>
+      )}    
       <WorkInspectionPopup
   selectedWork={selectedWork}
   onClose={() => setSelectedWork(null)}

@@ -1,29 +1,7 @@
 import Stripe from "stripe";
+import { neon } from "@neondatabase/serverless";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
-const PRODUCT_CATALOG = {
-  alice: {
-    name: "Alice Weekender",
-    priceCents: 10000,
-  },
-  rabbit: {
-    name: "Down the Rabbit Hole Carry-Along",
-    priceCents: 8000,
-  },
-  bcbgs: {
-    name: "Big City Block",
-    priceCents: 15000,
-  },
-  scbgs: {
-    name: "Small City Block",
-    priceCents: 7500,
-  },
-  cbls: {
-    name: "E-City Block",
-    priceCents: 2500,
-  },
-};
 
 export async function POST(request) {
   try {
@@ -37,24 +15,59 @@ export async function POST(request) {
       );
     }
 
-    const lineItems = cart.map((item) => {
-      const product = PRODUCT_CATALOG[item.id];
+    const databaseUrl =
+      process.env.DATABASE_URL ||
+      process.env.STORAGE_URL;
+
+    if (!databaseUrl) {
+      throw new Error("Database connection URL is missing.");
+    }
+
+    const sql = neon(databaseUrl);
+
+    const lineItems = [];
+
+    for (const item of cart) {
+      const rows = await sql`
+        SELECT
+          product_id,
+          title,
+          quantity,
+          price_cents,
+          active
+        FROM inventory
+        WHERE product_id = ${item.id}
+        LIMIT 1
+      `;
+
+      const product = rows[0];
 
       if (!product) {
         throw new Error(`Invalid product ID: ${item.id}`);
       }
 
-      return {
+      if (!product.active) {
+        throw new Error(`${product.title} is not currently available.`);
+      }
+
+      if (product.quantity <= 0) {
+        throw new Error(`${product.title} is no longer available.`);
+      }
+
+      lineItems.push({
         price_data: {
           currency: "usd",
-          product_data: {
-            name: product.name,
-          },
-          unit_amount: product.priceCents,
+         product_data: {
+  name: product.title,
+  metadata: {
+    product_id: product.product_id,
+  },
+},
+          unit_amount: product.price_cents,
         },
         quantity: 1,
-      };
-    });
+      });
+    }
 
     const origin =
       request.headers.get("origin") || "http://localhost:3000";

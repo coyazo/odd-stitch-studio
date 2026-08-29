@@ -1,9 +1,15 @@
 "use client";
-import { useState } from "react";
+import CartButton from "./components/CartButton";
+import CartDrawer from "./components/CartDrawer";
+import { useEffect, useState } from "react";
 import WorkInspectionPopup from "./components/WorkInspectionPopup";
+import { useCart } from "./components/CartProvider";
 export default function OSSWebsite() {
   const [selectedWork, setSelectedWork] = useState<any>(null);
   const [showComingSoon, setShowComingSoon] = useState(true);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { clearCart } = useCart();
+  const [acquisitionConfirmed, setAcquisitionConfirmed] = useState(false);
     const products = [
   {
     id: "qoh",
@@ -12,6 +18,7 @@ export default function OSSWebsite() {
     description:
       'Sturdy, colorful and attention-demanding - an overnight bag and a mini fit for a...',
     price: '$200',
+    priceCents: 20000,
     status: "Acquired",
     dimensions: "18L X 5W X 11H",
     story:
@@ -29,7 +36,8 @@ export default function OSSWebsite() {
     title: "Alice Weekender",
     description:
       'Reimagined duffle bag made to stand out and be fashionably Wonderland!',
-    price: '$175',
+    price: '$100',
+    priceCents: 10000,
     status: "available",
     dimensions:"18L X 5W X 11H",
     story:"A reimagined duffle bag made to stand out and feel fashionably Wonderland.",
@@ -51,7 +59,8 @@ export default function OSSWebsite() {
     title: "Down the Rabbit Hole Carry-Along",
     description:
       'Curved to Carry - holds all those essentials for all those otherworldly trips.',
-    price: '$125',
+    price: '$80',
+    priceCents: 8000,
     status: "available",
     dimensions: "15.5L X 3.5W X 12H",
     story:
@@ -75,43 +84,100 @@ const process = [
   { title: "Quilting & Construction", href: "/studio/construction" },
   { title: "Archive", href: "/works" }
 ];
-  return (
+ useEffect(() => {
+  const verifyCheckout = async () => {
+    const params = new URLSearchParams(window.location.search);
+
+    const checkout = params.get("checkout");
+    const sessionId = params.get("session_id");
+
+    if (checkout !== "success" || !sessionId) {
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `/api/checkout/verify?session_id=${encodeURIComponent(sessionId)}`
+      );
+
+      const data = await response.json();
+
+     if (response.ok && data.paid) {
+  clearCart();
+  setAcquisitionConfirmed(true);
+
+  window.history.replaceState(
+    {},
+    "",
+    window.location.pathname
+  );
+}
+    } catch (error) {
+      console.error("Checkout verification error:", error);
+    }
+  };
+
+  verifyCheckout();
+}, [clearCart]);
+ return (
     <div className="min-h-screen bg-[#EAE3D6] text-[#111111] font-['IBM_Plex_Mono'] overflow-x-hidden">
-      {/* NAVIGATION */}
-      <header className="sticky top-0 z-50 border-b border-[#D6CFC2] backdrop-blur bg-[#EAE3D6]/90">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl tracking-[0.45em] font-bold text-[#111111]">
-              OSS
-            </h1>
-            <p className="text-[10px] uppercase tracking-[0.35em] text-[#6B655E] mt-1">
-              Odd Stitch Studio — Art, Made to Carry
-            </p>
-          </div>
+     {/* NAVIGATION */}
+<header className="sticky top-0 z-50 border-b border-[#D6CFC2] backdrop-blur bg-[#EAE3D6]/90">
+  <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    
+    <div>
+      <h1 className="text-2xl tracking-[0.45em] font-bold text-[#111111]">
+        OSS
+      </h1>
 
-          <nav className="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-[0.25em] text-[#4D4842]">
-            <a href="#collection" className="hover:text-[#9E2A2B] transition-colors duration-300">
-              Collection
-            </a>
-            <a href="#about" className="hover:text-[#9E2A2B] transition-colors duration-300">
-              Philosophy
-            </a>
-            <a href="#process" className="hover:text-[#9E2A2B] transition-colors duration-300">
-              Process
-            </a>
-            <a href="#contact" className="hover:text-[#9E2A2B] transition-colors duration-300">
-              Registry
-            </a>
-          </nav>
+      <p className="text-[10px] uppercase tracking-[0.35em] text-[#6B655E] mt-1">
+        Odd Stitch Studio — Art, Made to Carry
+      </p>
+    </div>
 
-          <a
-          href="/works"
-          className="bg-[#111111] text-[#EAE3D6] px-8 py-4 rounded-full uppercase tracking-[0.25em] text-[11px] shadow-md hover:-translate-y-1 hover:scale-[1.015] hover:shadow-2xl hover:bg-[#7A2E2E] transition-all duration-300 ease-out">
-            Archive
-          </a>
-        </div>
-      </header>
+    <nav className="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-[0.25em] text-[#4D4842]">
+      <a
+        href="#collection"
+        className="hover:text-[#9E2A2B] transition-colors duration-300"
+      >
+        Collection
+      </a>
 
+      <a
+        href="#about"
+        className="hover:text-[#9E2A2B] transition-colors duration-300"
+      >
+        Philosophy
+      </a>
+
+      <a
+        href="#process"
+        className="hover:text-[#9E2A2B] transition-colors duration-300"
+      >
+        Process
+      </a>
+
+      <a
+        href="#contact"
+        className="hover:text-[#9E2A2B] transition-colors duration-300"
+      >
+        Registry
+      </a>
+    </nav>
+
+    <div className="flex items-center gap-6">
+      <CartButton onClick={() => setIsCartOpen(true)} />
+
+      <a
+        href="/works"
+        className="bg-[#111111] text-[#EAE3D6] px-8 py-4 rounded-full uppercase tracking-[0.25em] text-[11px] shadow-md hover:-translate-y-1 hover:scale-[1.015] hover:shadow-2xl hover:bg-[#7A2E2E] transition-all duration-300 ease-out"
+      >
+        Archive
+      </a>
+    </div>
+
+  </div>
+</header>
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-[#D6CFC2]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(17,17,17,0.04),transparent_40%)]" />
@@ -718,10 +784,58 @@ designed, constructed, and slightly spooky.
 
           </div>
         </div>
-      )}    
+      )}
+      {acquisitionConfirmed && (
+  <div className="fixed inset-0 z-[999999] flex items-center justify-center bg-[#111111]/50 backdrop-blur-md px-6">
+    <div className="relative w-full max-w-xl rounded-[2rem] border border-[#D6CFC2] bg-[#F4EEE4] p-8 md:p-12 text-center shadow-2xl">
+
+      <button
+        type="button"
+        onClick={() => setAcquisitionConfirmed(false)}
+        className="absolute top-5 right-5 w-8 h-8 rounded-full border border-[#7A2E2E] text-[#7A2E2E] flex items-center justify-center text-xl hover:bg-[#7A2E2E] hover:text-[#F4EEE4] transition-all duration-300"
+      >
+        ×
+      </button>
+
+      <p className="uppercase tracking-[0.35em] text-[10px] text-[#7A2E2E]">
+        OSS / Acquisition Register
+      </p>
+
+      <h2 className="mt-6 text-4xl md:text-5xl leading-tight tracking-[-0.04em] font-semibold text-[#111111]">
+        Acquisition Confirmed.
+      </h2>
+
+      <div className="mx-auto mt-7 w-12 border-t border-[#7A2E2E]" />
+
+      <p className="mt-7 text-sm md:text-base leading-relaxed text-[#5B5650]">
+        Thank you for acquiring an Odd Stitch Studio work.
+        Your payment has been confirmed and your acquisition
+        is officially registered.
+      </p>
+
+      <p className="mt-5 text-xs leading-relaxed text-[#8A8074]">
+        Additional order details and fulfillment information
+        will be provided through your purchase confirmation.
+      </p>
+
+      <button
+        type="button"
+        onClick={() => setAcquisitionConfirmed(false)}
+        className="mt-9 bg-[#111111] text-[#EAE3D6] px-8 py-4 rounded-full uppercase tracking-[0.25em] text-[10px] hover:bg-[#7A2E2E] transition-all duration-300"
+      >
+        Return to the Studio
+      </button>
+
+    </div>
+  </div>
+)}    
       <WorkInspectionPopup
   selectedWork={selectedWork}
   onClose={() => setSelectedWork(null)}
+/>
+<CartDrawer
+  isOpen={isCartOpen}
+  onClose={() => setIsCartOpen(false)}
 />
     </div>
   );

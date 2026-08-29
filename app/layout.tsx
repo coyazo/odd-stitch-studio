@@ -1,16 +1,17 @@
 import { Analytics } from "@vercel/analytics/react";
-import './globals.css'
-import { IBM_Plex_Mono } from 'next/font/google'
+import "./globals.css";
+import { IBM_Plex_Mono } from "next/font/google";
+import { CartProvider } from "./components/CartProvider";
 
 const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-})
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
 
 export const metadata = {
-  title: 'OSS',
-  description: 'Odd Stitch Studio',
-}
+  title: "OSS",
+  description: "Odd Stitch Studio",
+};
 
 export default function RootLayout({
   children,
@@ -20,9 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={ibmPlexMono.className}>
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
+
         <Analytics />
       </body>
     </html>
-  )
+  );
 }

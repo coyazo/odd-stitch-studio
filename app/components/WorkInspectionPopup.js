@@ -2,10 +2,15 @@
 
 import { createPortal } from "react-dom";
 import { useState, useEffect } from "react";
+import { useCart } from "./CartProvider";
 
 export default function WorkInspectionPopup({ selectedWork, onClose }) {
-  const [activeImage, setActiveImage] = useState("");
+  const [activeImage, setActiveImage] = useState(null);
+const { addToCart, isInCart } = useCart();
 
+const itemAlreadyInCart = selectedWork
+  ? isInCart(selectedWork.id)
+  : false;
   useEffect(() => {
     if (selectedWork) {
       setActiveImage(selectedWork.image);
@@ -41,11 +46,13 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
         <div className="flex flex-col md:flex-row gap-6 md:gap-8 p-5 md:p-8 items-start">
           <div className="w-full md:w-[360px] shrink-0">
   <div className="h-[240px] md: h-[300px] overflow-hidden rounded-[1.25rem] bg-[#DDD4C7] border border-[#D6CFC2]">
-    <img
-      src={activeImage}
-      alt={selectedWork.title}
-      className="w-full h-full object-contain"
-    />
+   {activeImage && (
+  <img
+    src={activeImage}
+    alt={selectedWork.title}
+    className="w-full h-full object-contain"
+  />
+)}
   </div>
 
   {selectedWork.images?.length > 0 && (
@@ -110,16 +117,19 @@ export default function WorkInspectionPopup({ selectedWork, onClose }) {
                 {selectedWork.story}
               </p>
             </div>
-           {selectedWork.status?.toLowerCase() === "available" &&
-  selectedWork.stripeUrl && (
-    <a
-      href={selectedWork.stripeUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[#111111] px-6 py-3 text-[10px] uppercase tracking-[0.25em] text-[#EAE3D6] hover:bg-[#7A2E2E] transition-all duration-300"
-    >
-      Acquire
-    </a>
+          {selectedWork.status?.toLowerCase() === "available" && (
+  <button
+    type="button"
+    onClick={() => addToCart(selectedWork)}
+    disabled={itemAlreadyInCart}
+    className={`mt-6 inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-[10px] uppercase tracking-[0.25em] transition-all duration-300 ${
+      itemAlreadyInCart
+        ? "bg-[#D6CFC2] text-[#6B655E] cursor-default"
+        : "bg-[#111111] text-[#EAE3D6] hover:bg-[#7A2E2E]"
+    }`}
+  >
+    {itemAlreadyInCart ? "Added to Cart" : "Add to Cart"}
+  </button>
 )}
           </div>
         </div>

@@ -8,6 +8,7 @@ export default function OSSWebsite() {
   const [selectedWork, setSelectedWork] = useState<any>(null);
   const [showComingSoon, setShowComingSoon] = useState(true);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [inventory, setInventory] = useState<Record<string, any>>({});
   const { clearCart } = useCart() as {
   clearCart: () => void;
 };
@@ -121,6 +122,30 @@ const process = [
 
   verifyCheckout();
 }, [clearCart]);
+useEffect(() => {
+  const loadInventory = async () => {
+    try {
+      const response = await fetch("/api/inventory");
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error("Unable to load inventory.");
+      }
+
+      const inventoryMap: Record<string, any> = {};
+
+      data.forEach((item: any) => {
+        inventoryMap[item.product_id] = item;
+      });
+
+      setInventory(inventoryMap);
+    } catch (error) {
+      console.error("Inventory load error:", error);
+    }
+  };
+
+  loadInventory();
+}, []);
  return (
     <div className="min-h-screen bg-[#EAE3D6] text-[#111111] font-['IBM_Plex_Mono'] overflow-x-hidden">
      {/* NAVIGATION */}
@@ -267,7 +292,18 @@ className="border border-[#BEB5A7] px-8 py-4 rounded-full uppercase tracking-[0.
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {products.map((product) => (
+          {products.map((product) => {
+  const stock = inventory[product.id];
+  const quantity = stock?.quantity ?? null;
+
+  const liveStatus =
+    quantity === 0
+      ? "Acquired"
+      : quantity > 0
+      ? "Available"
+      : product.status;
+
+  return (
            <div
   key={product.id}
   className="group bg-[#F4EEE4] border border-[#D6CFC2] rounded-[2.2rem] hover:-translate-y-1 transition-all duration-500"
@@ -281,8 +317,8 @@ className="border border-[#BEB5A7] px-8 py-4 rounded-full uppercase tracking-[0.
     className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
   />
 
- {/* ACQUIRED RIBBON */}
-{product.status.toLowerCase() === "acquired" && (
+{/* ACQUIRED RIBBON */}
+{liveStatus.toLowerCase() === "acquired" && (
   <div className="absolute top-6 right-[-55px] rotate-45 origin-center z-50 bg-[#111111] text-[#EAE3D6] px-14 py-1 text-[10px] uppercase tracking-[0.4em] font-semibold shadow-2xl">
     Acquired
   </div>
@@ -302,20 +338,28 @@ className="border border-[#BEB5A7] px-8 py-4 rounded-full uppercase tracking-[0.
                     </p>
                   </div>
 
-                  <span className="text-[11px] uppercase tracking-[0.2em] text-[#7A2E2E] whitespace-nowrap">
-                    {product.price}
-                  </span>
+                 {liveStatus === "Available" && (
+  <span className="text-[11px] uppercase tracking-[0.2em] text-[#7A2E2E] whitespace-nowrap">
+    {product.price}
+  </span>
+)}
                 </div>
 
                 <button
-  onClick={() => setSelectedWork(product)}
+  onClick={() =>
+  setSelectedWork({
+    ...product,
+    status: liveStatus,
+  })
+}
   className="mt-8 w-full border border-[#BEB5A7] px-8 py-4 rounded-full uppercase tracking-[0.25em] text-[11px] hover:border-[#7A2E2E] hover:text-[#7A2E2E] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out"
 >
   Inspect Item
 </button>
               </div>
             </div>
-          ))}
+            );
+})}
         </div>
         {/* MORE WORK */}
 <div className="flex justify-center mt-16">

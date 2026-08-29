@@ -3,7 +3,7 @@ import WorkInspectionPopup from "../components/WorkInspectionPopup";
 import CartButton from "../components/CartButton";
 import CartDrawer from "../components/CartDrawer";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function WorksPage() {
   const works = [
@@ -23,7 +23,7 @@ export default function WorksPage() {
         "A bold Wonderland pairing built around saturated color, graphic contrast, and structured utility.",
     },
     {
-      id: "alicew",
+      id: "alice",
       title: "Alice Weekender",
       type: "Boxy Duffle",
       image:"/images/aliceweekender.png",
@@ -43,7 +43,7 @@ export default function WorksPage() {
          stripeUrl:"https://buy.stripe.com/aFa5kx3qN1GL9q44pXe3e05",
     },
     {
-      id: "dtrh",
+      id: "rabbit",
       title: "Down the Rabbit Hole Carry-Along",
       type: "Structured & Curved Zip Up - A Minki Kim Pattern",
       image: "/images/DTRH1.png",
@@ -121,6 +121,31 @@ export default function WorksPage() {
   ];
 
   const [selectedWork, setSelectedWork] = useState(null);
+  const [inventory, setInventory] = useState({});
+  useEffect(() => {
+  const loadInventory = async () => {
+    try {
+      const response = await fetch("/api/inventory");
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error("Unable to load inventory.");
+      }
+
+      const inventoryMap = {};
+
+      data.forEach((item) => {
+        inventoryMap[item.product_id] = item;
+      });
+
+      setInventory(inventoryMap);
+    } catch (error) {
+      console.error("Inventory load error:", error);
+    }
+  };
+
+  loadInventory();
+}, []);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
@@ -156,7 +181,18 @@ export default function WorksPage() {
       {/* WORK GRID */}
       <section className="max-w-7xl mx-auto px-6 pt-16 pb-24">
         <div className="grid md:grid-cols-3 gap-8">
-          {works.map((work) => (
+          {works.map((work) => {
+  const stock = inventory[work.id];
+  const quantity = stock?.quantity ?? null;
+
+  const liveStatus =
+    quantity === 0
+      ? "Acquired"
+      : quantity > 0
+      ? "Available"
+      : work.status;
+
+  return (
             <div
               key={work.title}
               className="group bg-[#F4EEE4] border border-[#D6CFC2] rounded-[2rem] overflow-hidden hover:-translate-y-1 transition-all duration-500"
@@ -176,27 +212,33 @@ export default function WorksPage() {
   </p>
 
   <span className="text-[9px] uppercase tracking-[0.16em] text-[#8A8074] whitespace-nowrap pt-[2px]">
-    {work.status}
+    {liveStatus}
   </span>
 </div>
 
                 <h2 className="text-2xl leading-tight font-semibold">
                   {work.title}
                 </h2>
-{work.status === "Available" && (
+{liveStatus === "Available" && (
   <p className="mt-3 text-[11px] uppercase tracking-[0.18em] text-[#7A2E2E]">
     {work.price}
   </p>
 )}
                 <button
-                  onClick={() => setSelectedWork(work)}
+                  onClick={() =>
+  setSelectedWork({
+    ...work,
+    status: liveStatus,
+  })
+}
                   className="mt-8 border border-[#BEB5A7] px-6 py-3 rounded-full uppercase tracking-[0.25em] text-[11px] hover:border-[#7A2E2E] hover:text-[#7A2E2E] transition-all duration-300"
                 >
                   Inspect Work
                 </button>
               </div>
             </div>
-          ))}
+            );
+})}
         </div>
       </section>
 

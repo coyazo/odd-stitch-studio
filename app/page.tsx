@@ -8,7 +8,9 @@ export default function OSSWebsite() {
   const [selectedWork, setSelectedWork] = useState<any>(null);
   const [showComingSoon, setShowComingSoon] = useState(true);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const { clearCart } = useCart();
+  const { clearCart } = useCart() as {
+  clearCart: () => void;
+};
   const [acquisitionConfirmed, setAcquisitionConfirmed] = useState(false);
     const products = [
   {

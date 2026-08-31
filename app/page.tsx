@@ -303,6 +303,20 @@ className="border border-[#BEB5A7] px-8 py-4 rounded-full uppercase tracking-[0.
       ? "Available"
       : product.status;
 
+  const liveInventoryType =
+    stock?.inventory_type || "unique";
+
+  const liveAvailableQuantity =
+    quantity ??
+    (product.status.toLowerCase() === "acquired" ? 0 : 1);
+
+  const displayProduct = {
+    ...product,
+    status: liveStatus,
+    inventoryType: liveInventoryType,
+    availableQuantity: liveAvailableQuantity,
+  };
+
   return (
            <div
   key={product.id}
@@ -346,12 +360,7 @@ className="border border-[#BEB5A7] px-8 py-4 rounded-full uppercase tracking-[0.
                 </div>
 
                 <button
-  onClick={() =>
-  setSelectedWork({
-    ...product,
-    status: liveStatus,
-  })
-}
+  onClick={() => setSelectedWork(displayProduct)}
   className="mt-8 w-full border border-[#BEB5A7] px-8 py-4 rounded-full uppercase tracking-[0.25em] text-[11px] hover:border-[#7A2E2E] hover:text-[#7A2E2E] hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out"
 >
   Inspect Item

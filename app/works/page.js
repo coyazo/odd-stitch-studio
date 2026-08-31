@@ -192,6 +192,20 @@ export default function WorksPage() {
       ? "Available"
       : work.status;
 
+  const liveInventoryType =
+    stock?.inventory_type || "unique";
+
+  const liveAvailableQuantity =
+    quantity ??
+    (work.status.toLowerCase() === "acquired" ? 0 : 1);
+
+  const displayWork = {
+    ...work,
+    status: liveStatus,
+    inventoryType: liveInventoryType,
+    availableQuantity: liveAvailableQuantity,
+  };
+
   return (
             <div
               key={work.title}
@@ -225,12 +239,7 @@ export default function WorksPage() {
   </p>
 )}
                 <button
-                  onClick={() =>
-  setSelectedWork({
-    ...work,
-    status: liveStatus,
-  })
-}
+                  onClick={() => setSelectedWork(displayWork)}
                   className="mt-8 border border-[#BEB5A7] px-6 py-3 rounded-full uppercase tracking-[0.25em] text-[11px] hover:border-[#7A2E2E] hover:text-[#7A2E2E] transition-all duration-300"
                 >
                   Inspect Work

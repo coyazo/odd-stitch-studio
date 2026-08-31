@@ -18,9 +18,18 @@ export function CartProvider({ children }) {
     try {
       const savedCart = localStorage.getItem("oss-cart");
 
-      if (savedCart) {
-        setCart(JSON.parse(savedCart));
-      }
+     if (savedCart) {
+  const parsedCart = JSON.parse(savedCart);
+
+  const normalizedCart = parsedCart.map((item) => ({
+    ...item,
+    inventoryType: item.inventoryType || "unique",
+    availableQuantity: item.availableQuantity ?? 1,
+    quantity: item.quantity ?? 1,
+  }));
+
+  setCart(normalizedCart);
+}
     } catch (error) {
       console.error("Could not load OSS cart:", error);
     }
@@ -41,16 +50,47 @@ export function CartProvider({ children }) {
 
   const addToCart = (product) => {
     setCart((currentCart) => {
-      // OSS pieces are currently treated as one-of-a-kind.
-      // Don't allow the same piece to be added twice.
-      const alreadyInCart = currentCart.some(
+      const existingItem = currentCart.find(
         (item) => item.id === product.id
       );
 
-      if (alreadyInCart) {
+      // If the item is already in the cart...
+     if (existingItem) {
+  const inventoryType =
+    existingItem.inventoryType || "unique";
+
+  const availableQuantity =
+    existingItem.availableQuantity ?? 1;
+
+  // One-of-a-kind pieces can never exceed quantity 1.
+  if (inventoryType === "unique") {
+    return currentCart;
+  }
+
+  // Limited-stock pieces cannot exceed available inventory.
+  if (
+    existingItem.quantity >= availableQuantity
+  ) {
+          return currentCart;
+        }
+
+        // Increase quantity for limited-stock pieces.
+        return currentCart.map((item) =>
+          item.id === product.id
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
+            : item
+        );
+      }
+
+      // Don't add anything that has no available inventory.
+      if (product.availableQuantity <= 0) {
         return currentCart;
       }
 
+      // Add a new item to the cart.
       return [
         ...currentCart,
         {
@@ -61,10 +101,56 @@ export function CartProvider({ children }) {
           priceCents: product.priceCents,
           image: product.image,
           type: product.type,
+          inventoryType:
+            product.inventoryType || "unique",
+          availableQuantity:
+            product.availableQuantity ?? 1,
           quantity: 1,
         },
       ];
     });
+  };
+
+  const increaseQuantity = (productId) => {
+    setCart((currentCart) =>
+      currentCart.map((item) => {
+        if (item.id !== productId) {
+          return item;
+        }
+
+        // Unique pieces stay at quantity 1.
+        if (item.inventoryType === "unique") {
+          return item;
+        }
+
+        // Don't exceed available inventory.
+        if (item.quantity >= item.availableQuantity) {
+          return item;
+        }
+
+        return {
+          ...item,
+          quantity: item.quantity + 1,
+        };
+      })
+    );
+  };
+
+  const decreaseQuantity = (productId) => {
+    setCart((currentCart) =>
+      currentCart
+        .map((item) => {
+          if (item.id !== productId) {
+            return item;
+          }
+
+          return {
+            ...item,
+            quantity: item.quantity - 1,
+          };
+        })
+        .filter((item) => item.quantity > 0)
+    );
   };
 
   const removeFromCart = (productId) => {
@@ -79,6 +165,14 @@ export function CartProvider({ children }) {
 
   const isInCart = (productId) => {
     return cart.some((item) => item.id === productId);
+  };
+
+  const getCartQuantity = (productId) => {
+    const item = cart.find(
+      (cartItem) => cartItem.id === productId
+    );
+
+    return item?.quantity || 0;
   };
 
   const cartCount = cart.reduce(
@@ -97,9 +191,12 @@ export function CartProvider({ children }) {
       value={{
         cart,
         addToCart,
+        increaseQuantity,
+        decreaseQuantity,
         removeFromCart,
         clearCart,
         isInCart,
+        getCartQuantity,
         cartCount,
         cartTotal,
       }}

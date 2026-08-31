@@ -5,12 +5,14 @@ import { useCart } from "./CartProvider";
 
 export default function CartDrawer({ isOpen, onClose }) {
   const {
-    cart,
-    removeFromCart,
-    clearCart,
-    cartCount,
-    cartTotal,
-  } = useCart();
+  cart,
+  increaseQuantity,
+  decreaseQuantity,
+  removeFromCart,
+  clearCart,
+  cartCount,
+  cartTotal,
+} = useCart();
 
   useEffect(() => {
     if (!isOpen) return;
@@ -130,6 +132,38 @@ export default function CartDrawer({ isOpen, onClose }) {
                       <p className="text-base font-semibold leading-tight">
                         {item.title || item.name}
                       </p>
+                      {item.inventoryType === "limited" && (
+  <div className="mt-4">
+    <div className="flex items-center gap-3">
+      <button
+        type="button"
+        onClick={() => decreaseQuantity(item.id)}
+        aria-label={`Decrease quantity of ${item.title || item.name}`}
+        className="w-7 h-7 rounded-full border border-[#BEB5A7] flex items-center justify-center text-sm text-[#5B5650] hover:border-[#7A2E2E] hover:text-[#7A2E2E] transition-all duration-300"
+      >
+        −
+      </button>
+
+      <span className="min-w-5 text-center text-sm font-semibold text-[#111111]">
+        {item.quantity}
+      </span>
+
+      <button
+        type="button"
+        onClick={() => increaseQuantity(item.id)}
+        disabled={item.quantity >= item.availableQuantity}
+        aria-label={`Increase quantity of ${item.title || item.name}`}
+        className="w-7 h-7 rounded-full border border-[#BEB5A7] flex items-center justify-center text-sm text-[#5B5650] hover:border-[#7A2E2E] hover:text-[#7A2E2E] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-[#BEB5A7] disabled:hover:text-[#5B5650] transition-all duration-300"
+      >
+        +
+      </button>
+
+      <span className="ml-1 uppercase tracking-[0.18em] text-[8px] text-[#8A8074]">
+        {item.availableQuantity} Available
+      </span>
+    </div>
+  </div>
+)}
 
                       <p className="mt-2 uppercase tracking-[0.18em] text-[8px] text-[#8A8074]">
                         {item.type}

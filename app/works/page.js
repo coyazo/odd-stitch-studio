@@ -1,4 +1,5 @@
 "use client";
+import { PRODUCTS } from "@/lib/products";
 import WorkInspectionPopup from "../components/WorkInspectionPopup";
 import CartButton from "../components/CartButton";
 import CartDrawer from "../components/CartDrawer";
@@ -6,120 +7,7 @@ import CartDrawer from "../components/CartDrawer";
 import { useEffect, useState } from "react";
 
 export default function WorksPage() {
-  const works = [
-    {
-      id: "qoh",
-      title: "Queen of Hearts Weekender & Alice Mini",
-      type: "Boxy Duffle & Cosmetic Bag",
-      image: "/images/QOH&A.png",
-      images:[
-      "images/QOH&A.png",
-      ],
-      status: "Acquired",
-      price:"$200",
-      priceCents: 20000,
-      dimensions: "18L X 5W X 11H",
-      story:
-        "A bold Wonderland pairing built around saturated color, graphic contrast, and structured utility.",
-    },
-    {
-      id: "alice",
-      title: "Alice Weekender",
-      type: "Boxy Duffle",
-      image:"/images/aliceweekender.png",
-      images: [
-    "/images/aliceupclose.png",
-    "/images/alicetop.png",
-    "/images/aliceback.png",
-    "/images/alicelining.png",
-    "/images/aliceweekender.png",
-  ],
-      status: "Available",
-      price:"$100",
-      priceCents: 10000,
-      dimensions: "18L X 5W X 11H",
-      story:
-        "A reimagined duffle bag made to stand out and feel fashionably Wonderland.",
-         stripeUrl:"https://buy.stripe.com/aFa5kx3qN1GL9q44pXe3e05",
-    },
-    {
-      id: "rabbit",
-      title: "Down the Rabbit Hole Carry-Along",
-      type: "Structured & Curved Zip Up - A Minki Kim Pattern",
-      image: "/images/DTRH1.png",
-      images: [
-    "/images/dtrhfrontzip.png",
-    "/images/dtrhback.png",
-    "/images/dtrhside.png",
-    "/images/dtrhtopzip.png",
-    "images/DTRH1.png",
-  ],
-      status: "Available",
-      price:"$80",
-      priceCents: 8000,
-      dimensions: "15.5L X 3.5W X 12H",
-      story:
-        "A curved carry piece designed for everyday essentials and otherworldly little trips.",
-        stripeUrl:"https://buy.stripe.com/7sY4gt2mJ715eKog8Fe3e06",
-    },
-    {
-      id: "bcbgs",
-      title: "Big City Block",
-      type: "Gladstone Bag",
-      image: "/images/bcb.png",
-      images: [
-    "/images/bcbside.png",
-    "/images/bcbinside.png",
-    "/images/bcbinsidezip.png",
-    "/images/bcb.png",
-  ],
-      status: "Available",
-      price:"$150",
-      priceCents: 15000,
-      dimensions: "18L X 12.5W X 13H",
-      story:
-        "A structured Gladstone-style piece with architectural presence and practical interior volume.",
-        stripeUrl:"https://buy.stripe.com/8x27sFf9vbhlcCgbSpe3e07",
-    },
-    {
-      id: "scbgs",
-      title: "Small City Block",
-      type: "Gladstone Bag",
-      image: "/images/scb.png",
-      images: [
-    "/images/scbfull.png",
-    "/images/scbhardware.png",
-    "/images/scb.png",
-  ],
-      status: "Available",
-      price:"$75",
-      priceCents: 7500,
-      dimensions: "14L X 7.5W X 9.5H",
-      story:
-        "A smaller interpretation of the City Block form, balancing structured shape with compact utility.",
-        stripeUrl:"https://buy.stripe.com/3cIeV77H3etxcCgg8Fe3e08",
-    },
-    {
-      id: "cbls",
-      title: "E-City Block",
-      type: "Laptop Sleeve",
-      image: "/images/ecb.png",
-      images: [
-    "/images/ecbupclose.png",
-    "/images/ecblaptop.png",
-    "/images/ecbinside.png",
-    "/images/ecb.png",
-  ],
-      status: "Available",
-      price:"$25",
-      priceCents: 2500,
-      dimensions: "15L X .75W X 11.5H",
-      story:
-        "A protective textile sleeve designed for tech carry with OSS structure and visual intention.",
-        stripeUrl:"https://buy.stripe.com/6oU5kx5yVbhlfOs6y5e3e09",
-    },
-  ];
-
+  
   const [selectedWork, setSelectedWork] = useState(null);
   const [inventory, setInventory] = useState({});
   useEffect(() => {
@@ -181,7 +69,7 @@ export default function WorksPage() {
       {/* WORK GRID */}
       <section className="max-w-7xl mx-auto px-6 pt-16 pb-24">
         <div className="grid md:grid-cols-3 gap-8">
-          {works.map((work) => {
+          {PRODUCTS.map((work) => {
   const stock = inventory[work.id];
   const quantity = stock?.quantity ?? null;
 

@@ -137,7 +137,7 @@ const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
       </p>
     </div>
 
-    <nav className="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-[0.25em] text-[#4D4842]">
+    <nav className="hidden md:flex items-center gap-6 text-[11px] uppercase tracking-[0.25em] text-[#4D4842]">
       <a
         href="#collection"
         className="hover:text-[#9E2A2B] transition-colors duration-300"
@@ -165,6 +165,12 @@ const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
       >
         Registry
       </a>
+      <a
+  href="#contact"
+  className="hover:text-[#9E2A2B] transition-colors duration-300"
+>
+  Contact
+</a>
     </nav>
 
     <div className="flex items-center gap-6">

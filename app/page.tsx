@@ -5,7 +5,7 @@ import {
 } from "@/lib/products";
 import CartButton from "./components/CartButton";
 import CartDrawer from "./components/CartDrawer";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import WorkInspectionPopup from "./components/WorkInspectionPopup";
 import { useCart } from "./components/CartProvider";
 export default function OSSWebsite() {
@@ -16,6 +16,9 @@ export default function OSSWebsite() {
   clearCart: () => void;
 };
   const [acquisitionConfirmed, setAcquisitionConfirmed] = useState(false);
+  const [contactStatus, setContactStatus] = useState<
+  "idle" | "sending" | "success" | "error"
+>("idle");
    
 const process = [
   { title: "Textile Exploration", href: "/studio/textiles" },
@@ -87,6 +90,37 @@ useEffect(() => {
 
   loadInventory();
 }, []);
+const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const formData = new FormData(form);
+
+  setContactStatus("sending");
+
+  try {
+    const response = await fetch(
+      "https://formspree.io/f/xdekagna",
+      {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Message submission failed.");
+    }
+
+    form.reset();
+    setContactStatus("success");
+  } catch (error) {
+    console.error("Contact form error:", error);
+    setContactStatus("error");
+  }
+};
  return (
     <div className="min-h-screen bg-[#EAE3D6] text-[#111111] font-['IBM_Plex_Mono'] overflow-x-hidden">
      {/* NAVIGATION */}
@@ -126,7 +160,7 @@ useEffect(() => {
       </a>
 
       <a
-        href="#contact"
+        href="#registry"
         className="hover:text-[#9E2A2B] transition-colors duration-300"
       >
         Registry
@@ -615,8 +649,11 @@ Clean silhouettes and intentional construction create a grounding frame for bold
 </div>
       </section>
 
-      {/* NEWSLETTER */}
-      <section className="max-w-7xl mx-auto px-6 pb-28 lg:pb-36">
+      {/* REGISTRY */}
+<section
+  id="registry"
+  className="max-w-7xl mx-auto px-6 pb-28 lg:pb-36"
+>
         <div className="relative overflow-hidden rounded-[3rem] border border-[#D6CFC2] bg-[#F4EEE4] p-12 md:p-20 text-center">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(17,17,17,0.04),transparent_55%)]" />
 
@@ -656,12 +693,144 @@ Clean silhouettes and intentional construction create a grounding frame for bold
           </div>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer
+      {/* CONTACT THE STUDIO */}
+      <section
         id="contact"
         className="border-t border-[#D6CFC2] bg-[#E3DBCE]"
       >
+        <div className="max-w-7xl mx-auto px-6 py-28 lg:py-36">
+          <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-16 lg:gap-24 items-start">
+
+            <div>
+              <p className="uppercase tracking-[0.35em] text-[#7A2E2E] text-xs mb-5">
+                Studio Communications
+              </p>
+
+              <h3 className="text-4xl md:text-6xl leading-[0.95] tracking-[-0.04em] font-semibold text-[#111111]">
+                Contact the
+                <br />
+                studio.
+              </h3>
+
+              <div className="flex items-center gap-3 mt-8" aria-hidden="true">
+                <div className="h-[2px] w-14 bg-[#D96C9C]" />
+                <div className="h-[6px] w-[6px] rotate-45 bg-[#111111]" />
+                <div className="h-[2px] w-14 bg-[#3F9B9B]" />
+              </div>
+
+              <p className="mt-8 text-[#5B5650] text-base leading-relaxed max-w-md">
+                Questions, commissions, curiosities, or general oddities?
+                Send a transmission to the studio.
+              </p>
+
+              <p className="mt-6 text-[10px] uppercase tracking-[0.25em] text-[#7A746C]">
+                OSS / Incoming Transmission
+              </p>
+            </div>
+
+            <div className="bg-[#F4EEE4] border border-[#D6CFC2] rounded-[2.5rem] p-8 md:p-12 shadow-sm">
+              <form
+                onSubmit={handleContactSubmit}
+                className="space-y-7"
+              >
+                <div>
+                  <label
+                    htmlFor="contact-name"
+                    className="block mb-3 uppercase tracking-[0.28em] text-[9px] text-[#7A2E2E]"
+                  >
+                    Name
+                  </label>
+
+                  <input
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    placeholder="Your name"
+                    className="w-full bg-[#EAE3D6] border border-[#C8BFB2] rounded-full px-6 py-4 outline-none text-[#111111] placeholder:text-[#8A837A] focus:border-[#7A2E2E] transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-email"
+                    className="block mb-3 uppercase tracking-[0.28em] text-[9px] text-[#7A2E2E]"
+                  >
+                    Email
+                  </label>
+
+                  <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="Your transmission address"
+                    className="w-full bg-[#EAE3D6] border border-[#C8BFB2] rounded-full px-6 py-4 outline-none text-[#111111] placeholder:text-[#8A837A] focus:border-[#7A2E2E] transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contact-message"
+                    className="block mb-3 uppercase tracking-[0.28em] text-[9px] text-[#7A2E2E]"
+                  >
+                    Message
+                  </label>
+
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    required
+                    rows={7}
+                    placeholder="Enter transmission..."
+                    className="w-full bg-[#EAE3D6] border border-[#C8BFB2] rounded-[1.5rem] px-6 py-5 outline-none text-[#111111] placeholder:text-[#8A837A] focus:border-[#7A2E2E] transition-colors resize-y"
+                  />
+                </div>
+
+                <input
+                  type="text"
+                  name="_gotcha"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                />
+
+                <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+                  <button
+                    type="submit"
+                    disabled={contactStatus === "sending"}
+                    className="bg-[#111111] text-[#EAE3D6] px-8 py-4 rounded-full uppercase tracking-[0.25em] text-[10px] shadow-md hover:-translate-y-1 hover:shadow-xl hover:bg-[#7A2E2E] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 transition-all duration-300"
+                  >
+                    {contactStatus === "sending"
+                      ? "Transmitting..."
+                      : "Send Transmission →"}
+                  </button>
+
+                  {contactStatus === "success" && (
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-[#7A2E2E]">
+                      Transmission received.
+                    </p>
+                  )}
+
+                  {contactStatus === "error" && (
+                    <p className="text-[10px] uppercase tracking-[0.18em] text-[#7A2E2E]">
+                      Transmission interrupted. Please try again.
+                    </p>
+                  )}
+                </div>
+
+                {contactStatus === "success" && (
+                  <p className="text-sm leading-relaxed text-[#6B655E]">
+                    The studio will be in touch.
+                  </p>
+                )}
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-[#D6CFC2] bg-[#E3DBCE]">
         <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h4 className="text-2xl tracking-[0.45em] text-[#111111] font-semibold">
@@ -679,9 +848,12 @@ Clean silhouettes and intentional construction create a grounding frame for bold
             <a href="/works" className="hover:text-[#9E2A2B] transition-colors duration-300">
               Archive
             </a>
-            <a href="#contact" className="hover:text-[#9E2A2B] transition-colors duration-300">
-              Registry
-            </a>
+           <a href="#registry" className="hover:text-[#9E2A2B] transition-colors duration-300">
+  Registry
+</a>
+<a href="#contact" className="hover:text-[#9E2A2B] transition-colors duration-300">
+  Contact
+</a>
           </div>
         </div>
       </footer>

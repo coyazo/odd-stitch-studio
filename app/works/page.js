@@ -1,4 +1,5 @@
 "use client";
+
 import { PRODUCTS } from "@/lib/products";
 import WorkInspectionPopup from "../components/WorkInspectionPopup";
 import CartButton from "../components/CartButton";

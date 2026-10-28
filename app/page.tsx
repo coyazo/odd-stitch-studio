@@ -1,4 +1,5 @@
 "use client";
+import OddmasPopup from "./components/OddmasPopup";
 import {
   WONDERLAND_PRODUCTS,
   HALLOWEEN_PRODUCTS,
@@ -121,10 +122,14 @@ const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
     setContactStatus("error");
   }
 };
- return (
+   return (
     <div className="min-h-screen bg-[#EAE3D6] text-[#111111] font-['IBM_Plex_Mono'] overflow-x-hidden">
-     {/* NAVIGATION */}
-<header className="sticky top-0 z-50 border-b border-[#D6CFC2] backdrop-blur bg-[#EAE3D6]/90">
+
+      {/* ODDMAS TIME — HOLIDAY COLLECTION ANNOUNCEMENT */}
+      <OddmasPopup />
+
+      {/* NAVIGATION */}
+      <header className="sticky top-0 z-50 border-b border-[#D6CFC2] backdrop-blur bg-[#EAE3D6]/90">
   <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
     
     <div>
